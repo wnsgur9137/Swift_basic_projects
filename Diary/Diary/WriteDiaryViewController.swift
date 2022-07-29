@@ -7,6 +7,15 @@
 
 import UIKit
 
+enum DiaryEditorMode {
+    case new
+    case edit(IndexPath, Diary)
+}
+
+protocol WriteDiaryViewDelegate: AnyObject {
+    func didSelectReigster(diary: Diary)
+}
+
 class WriteDiaryViewController: UIViewController {
 
     @IBOutlet var txtTitle: UITextField!
@@ -16,13 +25,37 @@ class WriteDiaryViewController: UIViewController {
     
     private let datePicker = UIDatePicker()
     private var diaryDate: Date?    // DatePicker에서 설정된 Date를 저장하는 변수
+    weak var delegate: WriteDiaryViewDelegate?
+    var diaryEditorMode: DiaryEditorMode = .new
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureContentsTextView()
         self.configureDatePicker()
         self.configureInputField()
+        self.configureEditMode()
         self.btnConfirm.isEnabled = false
+    }
+    
+    private func configureEditMode() {
+        switch self.diaryEditorMode {
+        case let.edit(_, diary):
+            self.txtTitle.text = diary.title
+            self.txtviewContent.text = diary.contents
+            self.txtDate.text = dateToString(date: diary.date)
+            self.diaryDate = diary.date
+            self.btnConfirm.title = "수정"
+        
+        default:
+            break
+        }
+    }
+    
+    private func dateToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
+        formatter.locale = Locale(identifier: "Ko_KR")
+        return formatter.string(from: date)
     }
     
     private func configureContentsTextView() {
@@ -71,6 +104,21 @@ class WriteDiaryViewController: UIViewController {
     }
     
     @IBAction func tapConfirm(_ sender: UIBarButtonItem) {
+        guard let title = self.txtTitle.text else { return }
+        guard let contents = self.txtviewContent.text else { return }
+        guard let date = self.diaryDate else { return }
+        
+        switch self.diaryEditorMode {
+        case .new:
+            let diary = Diary(uuidString: UUID().uuidString, title: title, contents: contents, date: date, isStar: false)
+            self.delegate?.didSelectReigster(diary: diary)
+        case let .edit(indexPath, diary):
+            let diary = Diary(uuidString: diary.uuidString, title: title, contents: contents, date: date, isStar: diary.isStar)
+            NotificationCenter.default.post(name: NSNotification.Name("editDiary"),
+                                            object: diary,
+                                            userInfo: nil)
+        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     // 빈 화면을 누를 때 키보드나, 데이트피커를 닫음.

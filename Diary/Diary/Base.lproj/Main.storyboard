@@ -111,6 +111,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="80"/>
+                                        <connections>
+                                            <outlet property="lblDate" destination="v6E-n8-zKo" id="mJ4-Wn-nBK"/>
+                                            <outlet property="lblTitle" destination="dl1-Zu-BeH" id="2zA-3z-5Ro"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -125,6 +129,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bbw-hr-mjd"/>
+                    <connections>
+                        <outlet property="collectionView" destination="EaI-UC-0ze" id="Aeo-43-Q8R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WDh-DV-i5d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,7 +140,7 @@
         <!--Diary Detail View Controller-->
         <scene sceneID="xGa-ai-Dvc">
             <objects>
-                <viewController id="cPI-Kj-08s" customClass="DiaryDetailViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiaryDetailViewController" id="cPI-Kj-08s" customClass="DiaryDetailViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sg4-fV-pzw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,12 +202,18 @@
                                         <rect key="frame" x="0.0" y="0.0" width="48.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="수정"/>
+                                        <connections>
+                                            <action selector="btnEdit:" destination="cPI-Kj-08s" eventType="touchUpInside" id="OXm-Dz-Mnb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAA-DU-drE">
                                         <rect key="frame" x="98.5" y="0.0" width="48.5" height="31"/>
                                         <buttonConfiguration key="configuration" style="plain" title="삭제">
                                             <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="btnDelete:" destination="cPI-Kj-08s" eventType="touchUpInside" id="xIE-4a-9NW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -224,6 +237,11 @@
                             <constraint firstItem="s39-gJ-ay2" firstAttribute="trailing" secondItem="oli-X9-1kA" secondAttribute="trailing" constant="24" id="psa-Zt-XmM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblDate" destination="LVe-Zk-CDi" id="2lT-iw-VfS"/>
+                        <outlet property="lblTitle" destination="iwv-L9-8cC" id="sBr-OV-Ytl"/>
+                        <outlet property="txtViewContents" destination="vfK-t2-FXe" id="4Mk-p6-WO4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fth-Dg-NBs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -313,7 +331,7 @@
         <!--일기 작성-->
         <scene sceneID="b3T-q1-ksr">
             <objects>
-                <viewController id="Tl0-C7-WDR" customClass="WriteDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteDiaryViewController" id="Tl0-C7-WDR" customClass="WriteDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GYz-jO-XNp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
