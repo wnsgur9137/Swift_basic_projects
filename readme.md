@@ -103,11 +103,26 @@ Basic 프로젝트
 
 # **6. 뽀모도로 타이머 앱**
 
+[뽀모도로 타이머 앱](https://github.com/wnsgur9137/Swift_basic_projects/tree/pomodoroTimer)
+
+<br>
+
+관련 공부 포스트
+ - [DispatchSourceTimer, UIView Animation](https://wnsgur9137.github.io/swift_basic_09_Timer/)
+
 <br>
 <br>
 <br>
 
 # **7. 날씨 앱**
+
+[날씨 앱](https://github.com/wnsgur9137/Swift_basic_projects/tree/Weather)
+
+<br>
+
+관련 공부 포스트
+ - [HTTP, URLSession](https://wnsgur9137/github.io/swift_basic_10_URLSession/)
+
 
 <br>
 <br>
