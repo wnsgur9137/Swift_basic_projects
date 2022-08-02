@@ -103,7 +103,7 @@ Basic 프로젝트
 
 # **6. 뽀모도로 타이머 앱**
 
-[뽀모도로 타이머 앱](https://github.com/wnsgur9137/Swift_basic_projects/tree/pomodoroTimer)
+[뽀모도로 타이머 앱](https://github.com/wnsgur9137/Swift_basic_projects/tree/master/pomodoroTimer)
 
 <br>
 
@@ -116,7 +116,7 @@ Basic 프로젝트
 
 # **7. 날씨 앱**
 
-[날씨 앱](https://github.com/wnsgur9137/Swift_basic_projects/tree/Weather)
+[날씨 앱](https://github.com/wnsgur9137/Swift_basic_projects/tree/master/Weather)
 
 <br>
 
